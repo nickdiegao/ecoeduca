@@ -6,13 +6,16 @@ import com.ecoeduca.ecoeduca.JPArepository.RepositoryResponsaveis;
 import com.ecoeduca.ecoeduca.JPArepository.RepositoryUsuario;
 import com.ecoeduca.ecoeduca.Services.ServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/alunos")
+@CrossOrigin(origins = "http://localhost:4200") //endpoint frontend
 public class ControllerUser {
 
     @Autowired
@@ -20,7 +23,7 @@ public class ControllerUser {
 
     @Autowired
     private RepositoryUsuario usuarioRepository; // Injetando o repositório de usuários
-
+    
     @Autowired
     private RepositoryResponsaveis responsaveisRepository; // Injetando o repositório de responsáveis
 
@@ -52,4 +55,24 @@ public class ControllerUser {
         usuarioService.deletarUsuario(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Usuario loginRequest) {
+        Usuario usuario = usuarioRepository.findByEmail(loginRequest.getEmail());
+        System.out.println("Recebendo login de: " + loginRequest.getEmail());
+    
+        if (usuario == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado");
+        }
+    
+        // Verificar se a senha está correta
+        if (!usuario.getSenha().equals(loginRequest.getSenha())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha incorreta");
+        }
+    
+        // Login bem-sucedido
+        return ResponseEntity.ok("Login bem-sucedido, bem-vindo " + usuario.getNome());
+    } 
+    
+    
 }
