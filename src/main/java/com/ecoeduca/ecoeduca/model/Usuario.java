@@ -30,6 +30,9 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
+    @Column(nullable = true)
+    private int pontuacao = 0;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "responsavel_id", nullable = false)
     private Responsaveis responsavel;
@@ -101,6 +104,14 @@ public class Usuario {
 
     public String getSenha() {
         return senha;
+    }
+
+    public Integer getPontuacao() {
+        return pontuacao;
+    }
+    
+    public void setPontuacao(Integer pontuacao) {
+        this.pontuacao = pontuacao;
     }
 } 
 

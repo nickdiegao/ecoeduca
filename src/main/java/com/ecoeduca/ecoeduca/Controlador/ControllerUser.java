@@ -74,5 +74,11 @@ public class ControllerUser {
         return ResponseEntity.ok("Login bem-sucedido, bem-vindo " + usuario.getNome());
     } 
     
+    //A parte do ranking vai estar presente aqui
+    @GetMapping("/ranking")
+    public List<Usuario> listarRanking() {
+        // Pode usar um dos métodos definidos no repositório
+        return usuarioRepository.findAllByOrderByPontuacaoDesc();
+    }
     
 }
