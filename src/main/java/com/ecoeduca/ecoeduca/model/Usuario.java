@@ -106,12 +106,23 @@ public class Usuario {
         return senha;
     }
 
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     public Integer getPontuacao() {
         return pontuacao;
     }
     
     public void setPontuacao(Integer pontuacao) {
         this.pontuacao = pontuacao;
+    }
+
+    public String getResponsavelNome() {
+        if (this.responsavel != null) {
+            return this.responsavel.getNome();
+        }
+        return null;
     }
 } 
 

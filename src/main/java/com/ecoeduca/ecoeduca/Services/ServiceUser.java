@@ -33,4 +33,23 @@ public class ServiceUser {
     public Usuario buscarPorEmail(String email) {
         return usuarioRepository.findByEmail(email);
     }
+
+    public Usuario authenticate(String email, String senha) {
+        // Verifica se o usuário com o e-mail existe
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        if (usuario != null) {
+            System.out.println("Usuário encontrado: " + usuario.getNome());
+            System.out.println("Senha fornecida: " + senha);
+            System.out.println("Senha do banco: " + usuario.getSenha());
+    
+            if (usuario.getSenha().equals(senha)) {
+                return usuario;  // Senha correta
+            } else {
+                System.out.println("Senha incorreta");
+                return null;  // Senha incorreta
+            }
+        }
+        System.out.println("Usuário não encontrado");
+        return null;  // Usuário não encontrado
+    }
 }
