@@ -12,7 +12,7 @@ public class webconfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // Permite CORS para todas as rotas
-                .allowedOrigins("http://localhost:4200") // Permite apenas o frontend do Angular
+                .allowedOrigins("http://localhost:4200") // Permite apenas o frontend do Angular ***AJUSTAR PRO VERCEL****
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
                 .allowedHeaders("*"); // Todos os cabeçalhos
     }

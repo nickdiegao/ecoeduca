@@ -1,7 +1,6 @@
 package com.ecoeduca.ecoeduca.Controlador;
 
 import com.ecoeduca.ecoeduca.model.LoginRequest;
-import com.ecoeduca.ecoeduca.model.LoginResponse;
 import com.ecoeduca.ecoeduca.model.Responsaveis;
 import com.ecoeduca.ecoeduca.model.Usuario;
 import com.ecoeduca.ecoeduca.JPArepository.RepositoryResponsaveis;
@@ -18,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/alunos")
-@CrossOrigin(origins = "http://localhost:4200") //endpoint frontend
+@CrossOrigin(origins = "https://ecoeduca-ten.vercel.app") //endpoint frontend
 public class ControllerUser {
 
     @Autowired
@@ -47,12 +46,6 @@ public class ControllerUser {
 
     @PostMapping
     public Usuario criarUsuario(@RequestBody Usuario usuario) {
-        // Aqui buscamos o responsável baseado no ID fornecido
-        if (usuario.getResponsavel() != null) {
-            Responsaveis responsavel = responsaveisRepository.findById(usuario.getResponsavel().getId())
-                .orElseThrow(() -> new RuntimeException("Responsável não encontrado"));
-            usuario.setResponsavel(responsavel);
-        }
         return usuarioRepository.save(usuario); // Chamar o método save na instância do repositório
     }
 

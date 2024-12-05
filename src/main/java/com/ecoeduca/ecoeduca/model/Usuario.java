@@ -2,12 +2,9 @@ package com.ecoeduca.ecoeduca.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,23 +30,21 @@ public class Usuario {
     @Column(nullable = true)
     private int pontuacao = 0;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "responsavel_id", nullable = false)
-    private Responsaveis responsavel;
+    @Column(nullable = true)
+    private String nomeDoResponsavel;
 
-    @ManyToOne(fetch = FetchType.EAGER)     
-    @JoinColumn(name = "responsaveis_id", nullable = false)
-    private Responsaveis responsaveis; //existem dois responsaveis id's no banco de dados (alterar isso depois!!)
+    @Column(nullable = true)
+    private String nomeDoResponsavel2;
 
     public Usuario() {}
 
-    public Usuario(String nome, String email, Integer idade, Responsaveis responsavel, Responsaveis responsaveis, String senha) {
+    public Usuario(String nome, String email, Integer idade, String nomeDoResponsavel, String senha, String nomeDoResponsavel2) {
         this.nome = nome;
         this.email = email;
         this.idade = idade;
-        this.responsavel = responsavel;
-        this.responsaveis = responsaveis;
+        this.nomeDoResponsavel = nomeDoResponsavel;
         this.senha = senha;
+        this.nomeDoResponsavel2 = nomeDoResponsavel2;
     }
 
     // Getters e Setters
@@ -85,21 +80,20 @@ public class Usuario {
         this.idade = idade;
     }
 
-    public Responsaveis getResponsavel() {
-        return responsavel;
+    public String getNomeDoResponsavel() {
+        return nomeDoResponsavel;
     }
 
-    public void setResponsavel(Responsaveis id) {
-        this.responsavel = id;
+    public void setNomeDoResponsavel(String nomeDoResponsavel) {
+        this.nomeDoResponsavel = nomeDoResponsavel;
     }
 
-    
-    public Responsaveis getResponsaveis() {
-        return responsaveis;
+    public String getNomeDoResponsavel2() {
+        return nomeDoResponsavel;
     }
 
-    public void setResponsaveis(Responsaveis id) {
-        this.responsaveis = id;
+    public void setNomeDoResponsavel2(String nomeDoResponsavel2) {
+        this.nomeDoResponsavel2 = nomeDoResponsavel2;
     }
 
     public String getSenha() {
@@ -116,13 +110,6 @@ public class Usuario {
     
     public void setPontuacao(Integer pontuacao) {
         this.pontuacao = pontuacao;
-    }
-
-    public String getResponsavelNome() {
-        if (this.responsavel != null) {
-            return this.responsavel.getNome();
-        }
-        return null;
     }
 } 
 

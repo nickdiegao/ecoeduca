@@ -39,8 +39,8 @@ public class ServiceUser {
         Usuario usuario = usuarioRepository.findByEmail(email);
         if (usuario != null) {
             System.out.println("Usuário encontrado: " + usuario.getNome());
-            System.out.println("Senha fornecida: " + senha);
-            System.out.println("Senha do banco: " + usuario.getSenha());
+            // System.out.println("Senha fornecida: " + senha);
+            // System.out.println("Senha do banco: " + usuario.getSenha());
     
             if (usuario.getSenha().equals(senha)) {
                 return usuario;  // Senha correta
