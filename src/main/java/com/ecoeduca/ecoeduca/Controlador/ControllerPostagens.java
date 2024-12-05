@@ -28,7 +28,7 @@ import org.springframework.http.HttpHeaders;
 
 @RestController
 @RequestMapping("/postagens")
-@CrossOrigin(origins = "http://localhost:4200") // Ajuste conforme o domínio do frontend
+@CrossOrigin(origins = "https://ecoeduca-ten.vercel.app") // Ajuste conforme o domínio do frontend
 public class ControllerPostagens {
 
     @Autowired
