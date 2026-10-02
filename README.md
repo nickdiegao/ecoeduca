@@ -144,7 +144,6 @@ O projeto foi feito como trabalho acadêmico em 2024 e tem pontos a resolver ant
 - **Caminho de upload fixo**: o upload e a exclusão de imagens usam um caminho absoluto de uma máquina Windows específica, então só funcionam nela. O caminho deveria vir da configuração (ou as imagens irem para o S3, que já está no `pom.xml`).
 - **Credenciais no `application.properties`**: o ideal é deixar o arquivo sem senha e usar só variáveis de ambiente.
 - **Dois logins**: `/login` e `/alunos/login` fazem quase a mesma coisa; o frontend deve usar `/login`.
-- `getNomeDoResponsavel2()` devolve o primeiro responsável em vez do segundo.
 - A rota `/postagens/postagens/upload` duplica o upload e pode ser removida.
 
 ## Licença
