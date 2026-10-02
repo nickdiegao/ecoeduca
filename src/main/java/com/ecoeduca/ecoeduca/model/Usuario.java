@@ -89,7 +89,7 @@ public class Usuario {
     }
 
     public String getNomeDoResponsavel2() {
-        return nomeDoResponsavel;
+        return nomeDoResponsavel2;
     }
 
     public void setNomeDoResponsavel2(String nomeDoResponsavel2) {
